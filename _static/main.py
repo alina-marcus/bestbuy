@@ -11,12 +11,17 @@ best_buy = store.Store(product_list)
 
 
 def start():
+    """
+    Starts the store's main interactive menu loop, allowing the user
+    to view products, check total quantity, place orders, or exit.
+    """
     while True:
         print("\n--- Store Menu ---")
         print("1. List all products in store")
         print("2. Show total number of products")
         print("3. Make an order")
         print("4. Quit")
+
         try:
             user_selection = int(input("Please choose a number: "))
         except ValueError:
@@ -45,6 +50,12 @@ def start():
 
 
 def get_user_input():
+    """
+    Interactively gathers user input to build a shopping list of products and quantities.
+
+    Returns:
+        list: A list of tuples containing (Product, quantity).
+    """
     shopping_list = []
 
     while True:
@@ -58,7 +69,7 @@ def get_user_input():
             break
 
         try:
-            product_index = int(user_input)
+            product_index = int(user_input) - 1  # Adjusted to match displayed index
             selected_product = all_products[product_index]
         except (ValueError, IndexError):
             print("Invalid product number. Please try again.")
@@ -79,5 +90,5 @@ def get_user_input():
     return shopping_list
 
 
-
-start()
+if __name__ == "__main__":
+    start()
